@@ -6,61 +6,62 @@
 package Jeu2048;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
  * @author Solene
  */
-public class Case implements Parametres{
-    
+public class Case implements Parametres {
+
     private int x, y;
     private int valeur;
     private Grille grille;
     private int which;
-    
-    public Case(int a, int o, int v, int w){
+
+    public Case(int a, int o, int v, int w) {
         this.x = a;
         this.y = o;
         this.valeur = v;
         this.which = w;
     }
-    
-    public int getX(){
+
+    public int getX() {
         return this.x;
     }
-    
-    public int getY(){
+
+    public int getY() {
         return this.y;
     }
-    
-    public int getValeur(){
+
+    public int getValeur() {
         return this.valeur;
     }
-    
-    public int getWhich(){
+
+    public int getWhich() {
         return this.which;
     }
-    
-    public void setX(int a){
+
+    public void setX(int a) {
         this.x = a;
     }
-    
-    public void setY(int o){
+
+    public void setY(int o) {
         this.y = o;
     }
-    
-    public void setValeur(int v){
+
+    public void setValeur(int v) {
         this.valeur = v;
     }
-    
-    public void setGrille(Grille g){
+
+    public void setGrille(Grille g) {
         this.grille = g;
     }
-    
-    public void setWhich(int w){
+
+    public void setWhich(int w) {
         this.which = w;
     }
-    
+
     @Override
     public String toString() {
         return "Case(" + this.x + "," + this.y + "," + this.valeur + "," + this.which + ")";
@@ -75,61 +76,61 @@ public class Case implements Parametres{
     }
 
     @Override
-    public boolean equals(Object obj){
-        if(obj instanceof Case){
+    public boolean equals(Object obj) {
+        if (obj instanceof Case) {
             Case verif = (Case) obj;
-            if((verif.x == this.x)&&(verif.y == this.y)&&(verif.which == this.which)){
+            if ((verif.x == this.x) && (verif.y == this.y) && (verif.which == this.which)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean valeurEgale(Case c){
-        if(c!=null){
+    public boolean valeurEgale(Case c) {
+        if (c != null) {
             return this.valeur == c.valeur;
         }
         return false;
     }
-    
-    public Case monsieurLeVoisin(int dir){
-        
-        if(!grille.getGrilleUne().isEmpty()){
-            switch(dir){
+
+    public Case voisin(int dir, HashSet<Case> g) {
+
+        if (!g.isEmpty()) {
+            switch (dir) {
                 case HAUT:
-                    if(!grille.bordsGrille(HAUT).contains(this)){
-                        for(Case c : grille.getGrilleUne()){
-                            if((this.y == c.y) && (this.x == c.x + 1)){
-                                System.out.println(this.toString()+" - "+c.toString());
-                                //return c;
+                    if (!grille.bordsGrille(HAUT).contains(this)) {
+                        for (Case c : g) {
+                            if ((this.y == c.y) && (this.x == c.x + 1) && (this.which == c.which)) {
+                                //System.out.println(this.toString()+" - "+c.toString());
+                                return c;
                             }
                         }
                     }
                     break;
                 case BAS:
-                    if(!grille.bordsGrille(BAS).contains(this)){
-                        for(Case c : grille.getGrilleUne()){
-                            if((this.y == c.y) && (this.x == c.x - 1)){
-                                System.out.println(this.toString()+" - "+c.toString());
-                                //return c;
+                    if (!grille.bordsGrille(BAS).contains(this)) {
+                        for (Case c : g) {
+                            if ((this.y == c.y) && (this.x == c.x - 1) && (this.which == c.which)) {
+                                //System.out.println(this.toString()+" - "+c.toString());
+                                return c;
                             }
                         }
                     }
                 case GAUCHE:
-                    if(!grille.bordsGrille(GAUCHE).contains(this)){
-                        for(Case c : grille.getGrilleUne()){
-                            if((this.x == c.x) && (this.y == c.y - 1)){
-                                System.out.println(this.toString()+" - "+c.toString());
-                                //return c;
+                    if (!grille.bordsGrille(GAUCHE).contains(this)) {
+                        for (Case c : g) {
+                            if ((this.x == c.x) && (this.y == c.y + 1) && (this.which == c.which)) {
+                                //System.out.println(this.toString()+" - "+c.toString());
+                                return c;
                             }
                         }
                     }
                 case DROITE:
-                    if(!grille.bordsGrille(DROITE).contains(this)){
-                        for(Case c : grille.getGrilleUne()){
-                            if((this.x == c.x) && (this.y == c.y + 1)){
-                                System.out.println(this.toString()+" - "+c.toString());
-                                //return c;
+                    if (!grille.bordsGrille(DROITE).contains(this)) {
+                        for (Case c : g) {
+                            if ((this.x == c.x) && (this.y == c.y - 1) && (this.which == c.which)) {
+                                //System.out.println(this.toString()+" - "+c.toString());
+                                return c;
                             }
                         }
                     }
@@ -137,11 +138,7 @@ public class Case implements Parametres{
                     break;
             }
         }
-        /*for(Case d : liste){
-            System.out.println(d.toString());
-        }*/
         return null;
     }
-    
-    
+
 }

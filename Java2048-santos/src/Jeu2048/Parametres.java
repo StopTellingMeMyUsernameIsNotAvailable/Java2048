@@ -10,11 +10,12 @@ package Jeu2048;
  * @author Solene
  */
 public interface Parametres {
+
     int HAUT = 1;
     int DROITE = 2;
     int BAS = -1;
     int GAUCHE = -2;
-    
+
     int TAILLE = 4;
     int OBJECTIF = 2048;
 }

@@ -9,37 +9,18 @@ package Jeu2048;
  *
  * @author Solene
  */
-public class Main implements Parametres{
+public class Main implements Parametres {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Case c = new Case(0,0,2,1);
+        //Case c = new Case(0,0,2,1);
         //System.out.println(c.toString());
-        Grille g = new Grille();
         //System.out.println(g.toString());
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        g.genererCaseRandom();
-        System.out.println(g.toString());
+        /*g.genererCaseRandom();
+        System.out.println(g.toString());*/
         /*g.bordsGrille(HAUT);
         System.out.println("\n");
         g.bordsGrille(BAS);
@@ -47,7 +28,19 @@ public class Main implements Parametres{
         g.bordsGrille(GAUCHE);
         System.out.println("\n");
         g.bordsGrille(DROITE);*/
-        
+
+        /*g.onMove(HAUT);
+        System.out.println(g.toString());
+        g.onMove(BAS);
+        System.out.println(g.toString());
+        g.onMove(GAUCHE);
+        System.out.println(g.toString());
+        g.onMove(DROITE);
+        System.out.println(g.toString());*/
+        /*for(Case a : g.getGrilleDeux()){
+            System.out.println(a.toString());
+            a.voisin(HAUT, g.getGrilleDeux());
+        }*/
         /*g.onMove(HAUT);
         System.out.println(g.toString());
         g.onMove(BAS);
@@ -57,11 +50,11 @@ public class Main implements Parametres{
         g.onMove(DROITE);
         System.out.println(g.toString());*/
         
-        for(Case a : g.getGrilleUne()){
-            System.out.println(a.toString());
-            a.monsieurLeVoisin(GAUCHE);
-        }
         
+        Grille g = new Grille();
+        
+        g.partie();
+
     }
-    
+
 }
